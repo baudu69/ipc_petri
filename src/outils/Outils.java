@@ -124,6 +124,7 @@ public class Outils {
         // et on ajoute un fils à `f`, étiqueté par `M'`.
         int idenPere = iden;
         for (Integer t : franchissables) {
+
             List<Integer> mPrime = new ArrayList<>(m);
 
             for (int i = 0; i < P; i++) {
