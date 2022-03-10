@@ -10,50 +10,124 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OutilsTest {
 
     @Test
-    void testTemoin() {
-        List<Integer> un = List.of(0, 1);
-        List<Integer> deux = List.of(0, 2);
-        List<Integer> trois = List.of(1, 1);
-        List<Integer> quatre = List.of(2, 2);
-        assertTrue(Outils.temoin(un, deux));
-        assertFalse(Outils.temoin(deux, deux));
-        assertFalse(Outils.temoin(trois, un));
-        assertFalse(Outils.temoin(quatre, trois));
-    }
-
-    @Test
-    void testAlgo1() {
-        int P = 2;
-        int T = 3;
-        List<Integer> pre1 = Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
-        List<Integer> pre2 = Stream.of(0, 1, 1).collect(Collectors.toCollection(ArrayList::new));
+    void testExo1Figure1() {
+        //Pre
         List<List<Integer>> pre = new ArrayList<>();
-        pre.add(pre1);
-        pre.add(pre2);
+        pre.add(Stream.of(1, 0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 0, 0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 0, 1, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
         List<List<Integer>> post = new ArrayList<>();
-        List<Integer> post1 = Stream.of(0, 1, 0).collect(Collectors.toCollection(ArrayList::new));
-        List<Integer> post2 = Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
-        post.add(post1);
-        post.add(post2);
-        List<Integer> M = Stream.of(1, 0).collect(Collectors.toCollection(ArrayList::new));
+        post.add(Stream.of(0, 0, 0, 0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(1, 0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(1, 0, 0, 1, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 0, 1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(1, 0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
         assertTrue(Outils.estBorne(P, T, pre, post, M));
     }
 
     @Test
-    void testAlgo2() {
-        int P = 2;
-        int T = 3;
-        List<Integer> pre1 = Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
-        List<Integer> pre2 = Stream.of(0, 1, 1).collect(Collectors.toCollection(ArrayList::new));
+    void testExo1Figure2() {
+        //Pre
         List<List<Integer>> pre = new ArrayList<>();
-        pre.add(pre1);
-        pre.add(pre2);
+        pre.add(Stream.of(1, 0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(1, 1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 1, 0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 0, 1, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
         List<List<Integer>> post = new ArrayList<>();
-        List<Integer> post1 = Stream.of(0, 1, 0).collect(Collectors.toCollection(ArrayList::new));
-        List<Integer> post2 = Stream.of(2, 0, 0).collect(Collectors.toCollection(ArrayList::new));
-        post.add(post1);
-        post.add(post2);
-        List<Integer> M = Stream.of(1, 0).collect(Collectors.toCollection(ArrayList::new));
+        post.add(Stream.of(0, 0, 1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 0, 1, 1, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 0, 0, 1, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(1, 0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(1, 1, 1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
+        assertTrue(Outils.estBorne(P, T, pre, post, M));
+    }
+
+    @Test
+    void testExo1Figure3() {
+        //Pre
+        List<List<Integer>> pre = new ArrayList<>();
+        pre.add(Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 1, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
+        List<List<Integer>> post = new ArrayList<>();
+        post.add(Stream.of(0, 1, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(1,0).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
+        assertTrue(Outils.estBorne(P, T, pre, post, M));
+    }
+
+    @Test
+    void testExo1Figure4() {
+        //Pre
+        List<List<Integer>> pre = new ArrayList<>();
+        pre.add(Stream.of(1, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 1, 1, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0, 0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
+        List<List<Integer>> post = new ArrayList<>();
+        post.add(Stream.of(1, 1, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 0, 0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 0, 1, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(0,1,0).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
+        assertTrue(Outils.estBorne(P, T, pre, post, M));
+    }
+
+    @Test
+    void testExo1Figure5() {
+        //Pre
+        List<List<Integer>> pre = new ArrayList<>();
+        pre.add(Stream.of(1, 1).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 0).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
+        List<List<Integer>> post = new ArrayList<>();
+        post.add(Stream.of(0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(0, 1).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(1,0).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
         assertFalse(Outils.estBorne(P, T, pre, post, M));
+    }
+
+    @Test
+    void testExo1Figure6() {
+        //Pre
+        List<List<Integer>> pre = new ArrayList<>();
+        pre.add(Stream.of(5, 2, 0).collect(Collectors.toCollection(ArrayList::new)));
+        pre.add(Stream.of(0, 1, 5).collect(Collectors.toCollection(ArrayList::new)));
+        //Post
+        List<List<Integer>> post = new ArrayList<>();
+        post.add(Stream.of(2, 0, 5).collect(Collectors.toCollection(ArrayList::new)));
+        post.add(Stream.of(3, 3, 0).collect(Collectors.toCollection(ArrayList::new)));
+        //M
+        List<Integer> M = Stream.of(4, 2).collect(Collectors.toCollection(ArrayList::new));
+
+        int P = pre.size();
+        int T = pre.get(0).size();
+        assertTrue(Outils.estBorne(P, T, pre, post, M));
     }
 }

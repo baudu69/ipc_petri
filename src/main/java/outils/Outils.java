@@ -111,14 +111,10 @@ public class Outils {
         }
 
         //Condition 1 : Si `f` a un ancêtre étiqueté par `M`, on passe à la feuille suivante.
-        listeAncetre.remove(listeAncetre.size()-1);
+        listeAncetre.remove(listeAncetre.size()-1); //On s'auto-enlève de la liste des ancetres
         if (listeAncetre.contains(m) && iden != 0) {
             return -1;
         }
-
-
-
-
 
         //Sinon, pour chaque transition `t` admissible par `M`, on calcule `M'` tel que `M --t-> M'`,
         // et on ajoute un fils à `f`, étiqueté par `M'`.
