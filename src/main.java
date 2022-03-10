@@ -2,36 +2,24 @@ import outils.Outils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class main {
     public static void main(String[] args) {
         int P = 2;
         int T = 3;
-        List<Integer> e2 = new java.util.ArrayList<>();
-        e2.add(0);
-        e2.add(1);
-        e2.add(1);
-        List<Integer> e1 = new java.util.ArrayList<>();
-        e1.add(1);
-        e1.add(0);
-        e1.add(0);
+        List<Integer> pre1 = Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
+        List<Integer> pre2 = Stream.of(0, 1, 1).collect(Collectors.toCollection(ArrayList::new));
         List<List<Integer>> pre = new ArrayList<>();
-        pre.add(e1);
-        pre.add(e2);
+        pre.add(pre1);
+        pre.add(pre2);
         List<List<Integer>> post = new ArrayList<>();
-        List<Integer> e = new ArrayList<>();
-        e.add(0);
-        e.add(2);
-        e.add(0);
-        post.add(e);
-        List<Integer> e3 = new ArrayList<>();
-        e3.add(2);
-        e3.add(0);
-        e3.add(0);
-        post.add(e3);
-        List<Integer> M = new ArrayList<>();
-        M.add(1);
-        M.add(0);
+        List<Integer> post1 = Stream.of(0, 1, 0).collect(Collectors.toCollection(ArrayList::new));
+        List<Integer> post2 = Stream.of(1, 0, 0).collect(Collectors.toCollection(ArrayList::new));
+        post.add(post1);
+        post.add(post2);
+        List<Integer> M = Stream.of(1, 0).collect(Collectors.toCollection(ArrayList::new));
         System.out.println("Liste bornee : " + Outils.estBorne(P, T, pre, post, M));
     }
 }
