@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Outils {
 
+
     /**
      * @param P    Nombre de places P
      * @param T    Nombre de transitions T
@@ -109,7 +110,6 @@ public class Outils {
                 return 0;
             }
         }
-
         //Condition 1 : Si `f` a un ancêtre étiqueté par `M`, on passe à la feuille suivante.
         listeAncetre.remove(listeAncetre.size()-1); //On s'auto-enlève de la liste des ancetres
         if (listeAncetre.contains(m) && iden != 0) {
@@ -139,7 +139,6 @@ public class Outils {
         }
 
         return 1;
-
     }
 
     /**
@@ -155,7 +154,8 @@ public class Outils {
     public static boolean estBorne(int P, int T, List<List<Integer>> pre, List<List<Integer>> post, List<Integer> m) {
         RenvoieAjoutFils arbre = ajoutFils(new ArrayList<>(), new ArrayList<>(), 0, m);
         List<Integer> franchissables = franchissable(P, T, pre, post, m);
-
-        return estBorneWorker(arbre.arbre_dict(), arbre.arbre_tab(), 0, franchissables, P, T, pre, post, m) == 1;
+        boolean etat = estBorneWorker(arbre.arbre_dict(), arbre.arbre_tab(), 0, franchissables, P, T, pre, post, m) == 1;
+        System.out.println(etat ? "Le réseau est borné" : "Le réseau n'est pas borné");
+        return etat;
     }
 }
